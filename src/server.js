@@ -11,7 +11,7 @@ const hostname = process.env.HOST_NAME;
 configViewEngine(app);
 
 // Khai báo Router
-//app.use('/test', webRoutes);
+//app.use('/v1', webRoutes);  URL:http://localhost:3000/v1/.... 
 app.use('/', webRoutes);
 
 app.listen(port, hostname, () => {
