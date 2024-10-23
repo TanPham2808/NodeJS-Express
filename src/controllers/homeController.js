@@ -2,6 +2,8 @@
 
 
 const getHomePage = (req, res) => {
+    // Xử lý Data
+    // Gọi Model
     res.send('Hello World Tui La Tan Pham')
 }
 
