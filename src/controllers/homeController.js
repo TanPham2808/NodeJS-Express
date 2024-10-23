@@ -1,10 +1,16 @@
-
+const connection = require('../config/database');
 
 
 const getHomePage = (req, res) => {
-    // Xử lý Data
-    // Gọi Model
-    res.send('Hello World Tui La Tan Pham')
+    let users = [];
+
+    connection.query(
+        'select * from Users u',
+        function (err, results, fields) {
+            users = results;
+            res.send(JSON.stringify(users))
+        }
+    );
 }
 
 const getABC = (req, res) => {
