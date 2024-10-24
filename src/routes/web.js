@@ -10,6 +10,7 @@ router.get('/hoidanit', getHoiDanIT)
 router.get('/create', getCreatePage)
 router.post('/create-user', postCreateUser)
 
-router.get('/update', getUpdatePage)
+// Truyền động param 'id' 
+router.get('/update/:id', getUpdatePage)
 
 module.exports = router
