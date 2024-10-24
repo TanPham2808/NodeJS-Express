@@ -51,27 +51,6 @@
                 <th>City</th>
                 <th>Actions</th>
             </tr>
-            <!-- <% for (var i=0; i < lstUsers.length; i++) { %>
-                <tr>
-                    <td>
-                        <%= lstUsers[i].id %>
-                    </td>
-                    <td>
-                        <%= lstUsers[i].email %>
-                    </td>
-                    <td>
-                        <%= lstUsers[i].name %>
-                    </td>
-                    <td>
-                        <%= lstUsers[i].city %>
-                    </td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </td>
-                </tr>
-                <% } %> -->
-
             <% lstUsers.forEach(function(user) { %>
                 <tr>
                     <td>
@@ -87,7 +66,7 @@
                         <%= user.city %>
                     </td>
                     <td>
-                        <button>Edit</button>
+                        <a href="/update">Edit</a>
                         <button>Delete</button>
                     </td>
 

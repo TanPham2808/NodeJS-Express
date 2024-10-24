@@ -18,20 +18,12 @@ const getCreatePage = (req, res) => {
     res.render('create.ejs')
 }
 
+const getUpdatePage = (req, res) => {
+    res.render('edit.ejs')
+}
+
 const postCreateUser = async (req, res) => {
     let { email, name, city } = req.body
-    // KHÔNG DÙNG ASYNC AWAIT
-    // connection.query(
-    //     `INSERT INTO 
-    //     Users (email, name, city)
-    //     VALUES (?, ?, ?)`,
-    //     [email, name, city],
-    //     function (err, results) {
-    //         console.log(results);
-    //         res.send('Create user successed !')
-    //     }
-    // );
-
     // DÙNG ASYNC AWAIT
     try {
         let [result, fields] = await connection.query(
@@ -49,5 +41,5 @@ module.exports = {
     getABC,
     getHoiDanIT,
     postCreateUser,
-    getCreatePage
+    getCreatePage, getUpdatePage
 }
