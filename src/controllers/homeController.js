@@ -52,7 +52,7 @@ const postDeleteUser = async (req, res) => {
     let userId = req.body.id;
     let response = await deleteUser(userId);
     if (response) {
-        return res.send(' Delete user succeed !');
+        return res.redirect('/');
     }
     return res.send(' Delete user fail !');
 }
