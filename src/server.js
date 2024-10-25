@@ -3,7 +3,7 @@ const express = require('express')
 const configViewEngine = require('../src/config/viewEngine');
 const webRoutes = require('./routes/web');
 const connection = require('../src/config/database');
-const mongoose = require('mongoose');
+const Kitten = require('./models/Kitten');
 
 const app = express()
 const port = process.env.PORT || 8888;
@@ -20,11 +20,7 @@ configViewEngine(app);
 //app.use('/v1', webRoutes);  URL:http://localhost:3000/v1/.... 
 app.use('/', webRoutes);
 
-const kittySchema = new mongoose.Schema({
-    name: String
-});
-const Kitten = mongoose.model('Kitten', kittySchema);
-const cat = new Kitten({ name: 'Tan Pham cat' });
+const cat = new Kitten({ name: 'Tan Pham cat model' });
 cat.save();
 
 // seft running funcion
