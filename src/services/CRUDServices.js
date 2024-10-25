@@ -26,6 +26,7 @@ const getUserById = async (userId) => {
 
 const createUser = async (email, name, city) => {
     try {
+        // Nó tự thêm xuống DB ko cần save (lý do mình đang thao tác với model)
         await User.create({
             email: email,
             name: name,
