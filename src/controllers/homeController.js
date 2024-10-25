@@ -40,12 +40,8 @@ const getDeletePage = async (req, res) => {
 
 const postUpdateUser = async (req, res) => {
     let { id, email, name, city } = req.body
-    let response = await updateUser(id, email, name, city);
-    console.log(">>>>check: ", response);
-    if (response) {
-        return res.send(' Updated user succeed !');
-    }
-    return res.send(' Error Update user !');
+    await updateUser(id, email, name, city);
+    res.send(' Updated user succeed !');
 }
 
 const postDeleteUser = async (req, res) => {
