@@ -1,5 +1,8 @@
 const connection = require('../config/database');
 
+// Lấy Model
+const User = require('../models/User');
+
 const getAllUsers = async () => {
     try {
         let [results, fields] = await connection.query('select * from Users')
@@ -23,10 +26,11 @@ const getUserById = async (userId) => {
 
 const createUser = async (email, name, city) => {
     try {
-        let [result, fields] = await connection.query(
-            `INSERT INTO Users (email, name, city) VALUES (?, ?, ?) `, [email, name, city]
-        )
-        return result;
+        await User.create({
+            email: email,
+            name: name,
+            city: city
+        })
     } catch (err) {
         return console.log(err);
     }

@@ -2,7 +2,7 @@ const connection = require('../config/database');
 const { getAllUsers, getUserById, createUser, updateUser, deleteUser } = require('../services/CRUDServices');
 
 const getHomePage = async (req, res) => {
-    let results = await getAllUsers();
+    let results = [];
     return res.render("home.ejs", { lstUsers: results });
 }
 
