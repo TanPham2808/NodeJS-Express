@@ -21,6 +21,17 @@ const getUserById = async (userId) => {
     }
 }
 
+const createUser = async (email, name, city) => {
+    try {
+        let [result, fields] = await connection.query(
+            `INSERT INTO Users (email, name, city) VALUES (?, ?, ?) `, [email, name, city]
+        )
+        return result;
+    } catch (err) {
+        return console.log(err);
+    }
+}
+
 const updateUser = async (id, email, name, city) => {
     try {
         let [result, fields] = await connection.query(
@@ -45,5 +56,5 @@ const deleteUser = async (userId) => {
 }
 
 module.exports = {
-    getAllUsers, getUserById, updateUser, deleteUser
+    getAllUsers, getUserById, createUser, updateUser, deleteUser
 }
