@@ -19,9 +19,16 @@ configViewEngine(app);
 //app.use('/v1', webRoutes);  URL:http://localhost:3000/v1/.... 
 app.use('/', webRoutes);
 
-// test connection MongoDB
-connection();
+// seft running funcion
+(async () => {
+    // test connection MongoDB (nếu lỗi thì server ko chạy nữa)
+    try {
+        await connection();
+        app.listen(port, hostname, () => {
+            console.log(`Backend Zero app listening on port ${port}`)
+        })
+    } catch (error) {
+        console.log(">>>> Error connect to DB: ", error)
+    }
+})()
 
-app.listen(port, hostname, () => {
-    console.log(`Example app listening on port ${port}`)
-})
