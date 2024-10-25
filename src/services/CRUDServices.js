@@ -5,8 +5,7 @@ const User = require('../models/User');
 
 const getAllUsers = async () => {
     try {
-        let [results, fields] = await connection.query('select * from Users')
-        return results;
+        return await User.find({});
     }
     catch (err) {
         console.log(err);
