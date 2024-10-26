@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const configViewEngine = require('../src/config/viewEngine');
 const webRoutes = require('./routes/web');
+
+const apiRoutes = require('./routes/api');
 const connection = require('../src/config/database');
 
 const app = express()
@@ -18,6 +20,9 @@ configViewEngine(app);
 // Khai báo Router
 //app.use('/v1', webRoutes);  URL:http://localhost:3000/v1/.... 
 app.use('/', webRoutes);
+
+// Khai báo Router cho API
+app.use('/v1/api', apiRoutes);
 
 // seft running funcion
 (async () => {
