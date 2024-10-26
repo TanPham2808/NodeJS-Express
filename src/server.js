@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const configViewEngine = require('../src/config/viewEngine');
+const fileUpload = require('express-fileupload');
 const webRoutes = require('./routes/web');
 
 const apiRoutes = require('./routes/api');
@@ -10,7 +11,12 @@ const app = express()
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
 
-// Config req.body
+// app.use () => Đây là 1 Middleware của framework Express
+
+// Config fileupload
+app.use(fileUpload());
+
+// Config req.body 
 app.use(express.json()) // for json
 app.use(express.urlencoded({ extended: true })) // for form data
 
