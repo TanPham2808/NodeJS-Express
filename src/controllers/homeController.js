@@ -46,11 +46,8 @@ const postUpdateUser = async (req, res) => {
 
 const postDeleteUser = async (req, res) => {
     let userId = req.body.id;
-    let response = await deleteUser(userId);
-    if (response) {
-        return res.redirect('/');
-    }
-    return res.send(' Delete user fail !');
+    await deleteUser(userId);
+    return res.redirect('/');
 }
 
 module.exports = {
