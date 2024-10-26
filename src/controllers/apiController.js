@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const { uploadSingleFile, uploadMutipleFiles } = require('../services/fileService');
 
 const getUserAPI = async (req, res) => {
     let results = await User.find({})
@@ -50,6 +51,18 @@ const deleteUserAPI = async (req, res) => {
     })
 }
 
+// API CUSTOMER
+const postUploadSingleFileAPI = async (req, res) => {
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+    let result = await uploadSingleFile(req.files.image) // .image chính là key nhập trong postman
+    console.log(">>>>check result: ", result);
+
+    return res.send("Ok single");
+}
+
 module.exports = {
-    getUserAPI, postUserAPI, putUserAPI, deleteUserAPI
+    getUserAPI, postUserAPI, putUserAPI, deleteUserAPI,
+    postUploadSingleFileAPI
 }
