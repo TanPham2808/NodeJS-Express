@@ -51,7 +51,7 @@ const deleteUserAPI = async (req, res) => {
     })
 }
 
-// API CUSTOMER
+// API UPLOAD FILE
 const postUploadSingleFileAPI = async (req, res) => {
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded.');
@@ -62,7 +62,28 @@ const postUploadSingleFileAPI = async (req, res) => {
     return res.send("Ok single");
 }
 
+const postUploadMutipleFileAPI = async (req, res) => {
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+    //upload single => files is an object
+    //upload multiple => files is an array
+    if (Array.isArray(req.files.image)) {
+        //upload multiple
+        let result = await uploadMutipleFiles(req.files.image);
+        return res.status(200).json({
+            EC: 0,
+            data: result
+        })
+
+    } else {
+        //upload single
+        return await postUploadSingleFileAPI(req, res);
+    }
+
+}
+
 module.exports = {
     getUserAPI, postUserAPI, putUserAPI, deleteUserAPI,
-    postUploadSingleFileAPI
+    postUploadSingleFileAPI, postUploadMutipleFileAPI
 }
